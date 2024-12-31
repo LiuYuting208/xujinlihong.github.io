@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>python-p2-download</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-72d5d2b44bfddbcb81d6511eeb186058.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles/index.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Index</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../homework.html"> 
+<span class="menu-text">Homework</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../labs.html"> 
+<span class="menu-text">Labs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../practice.html"> 
+<span class="menu-text">Practice</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/LiuYuting208/homework-C-group"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="empirical-project-2-working-in-python" class="level1">
+<h1>Empirical project 2 — Working in Python</h1>
+<section id="getting-started-in-python" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started-in-python">Getting started in Python</h2>
+<p>Read the ‘Getting Started in Python’ page for help and advice on setting up a Python session to work with. Remember, you can run any page from this book as a <em>notebook</em> by downloading the relevant file from this <a href="https://github.com/aeturrell/core_python">repository</a> and running it on your own computer. Alternatively, you can run pages online in your browser over at <a href="https://mybinder.org/v2/gh/aeturrell/core_python/HEAD">Binder</a>.</p>
+<section id="preliminary-settings" class="level3">
+<h3 class="anchored" data-anchor-id="preliminary-settings">Preliminary settings</h3>
+<p>Let’s import the packages we’ll need and also configure the settings we want:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pingouin <span class="im">as</span> pg</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lets_plot <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html(no_js<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">### You don't need to use these settings yourself</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">### — they are just here to make the book look nicer!</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the plot style for prettier charts:</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>plt.style.use(</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://raw.githubusercontent.com/aeturrell/core_python/main/plot_style.txt"</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="part-2.1-collecting-data-by-playing-a-public-goods-game" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.1-collecting-data-by-playing-a-public-goods-game">Part 2.1 Collecting data by playing a public goods game</h2>
+<section id="python-walk-through-2.1-plotting-a-line-chart-with-multiple-variables" class="level3">
+<h3 class="anchored" data-anchor-id="python-walk-through-2.1-plotting-a-line-chart-with-multiple-variables">Python walk-through 2.1 Plotting a line chart with multiple variables</h3>
+<p>Use the data from your own experiment to answer Question 1. As an example, we will use the data for the first three cities of the dataset that will be introduced in Part 2.2.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a dictionary with the data in</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Copenhagen"</span>: [<span class="fl">14.1</span>, <span class="fl">14.1</span>, <span class="fl">13.7</span>, <span class="fl">12.9</span>, <span class="fl">12.3</span>, <span class="fl">11.7</span>, <span class="fl">10.8</span>, <span class="fl">10.6</span>, <span class="fl">9.8</span>, <span class="fl">5.3</span>],</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Dniprop"</span>: [<span class="fl">11.0</span>, <span class="fl">12.6</span>, <span class="fl">12.1</span>, <span class="fl">11.2</span>, <span class="fl">11.3</span>, <span class="fl">10.5</span>, <span class="fl">9.5</span>, <span class="fl">10.3</span>, <span class="fl">9.0</span>, <span class="fl">8.7</span>],</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Minsk"</span>: [<span class="fl">12.8</span>, <span class="fl">12.3</span>, <span class="fl">12.6</span>, <span class="fl">12.3</span>, <span class="fl">11.8</span>, <span class="fl">9.9</span>, <span class="fl">9.9</span>, <span class="fl">8.4</span>, <span class="fl">8.3</span>, <span class="fl">6.9</span>],</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame.from_dict(data)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div>
+
+<table class="dataframe table table-sm table-striped small">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+Copenhagen
+</th>
+<th>
+Dniprop
+</th>
+<th>
+Minsk
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+0
+</th>
+<td>
+14.1
+</td>
+<td>
+11.0
+</td>
+<td>
+12.8
+</td>
+</tr>
+<tr>
+<th>
+1
+</th>
+<td>
+14.1
+</td>
+<td>
+12.6
+</td>
+<td>
+12.3
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+13.7
+</td>
+<td>
+12.1
+</td>
+<td>
+12.6
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+12.9
+</td>
+<td>
+11.2
+</td>
+<td>
+12.3
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+12.3
+</td>
+<td>
+11.3
+</td>
+<td>
+11.8
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now we need to plot the data. Note that, with data in ‘wide’ format (one column per city) and with an index, simply calling <code>.plot</code> on a <strong>pandas</strong> dataframe will create a <strong>matplotlib</strong> line chart. We could also use the <strong>lets-plot</strong> package to make this kind of chart, but it expects data in ‘tidy’ or ‘long’ format—and for that, we would have to reshape the data so that the city names were values in a single column called ‘city’ or similar. Let’s just use <strong>matplotlib</strong> for now.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df.plot(ax<span class="op">=</span>ax)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Average contributions to the public goods game: Without punishment"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Average contribution"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Round"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="empirical_project_2_files/empirical_project_WT1_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p><strong>Figure 2.1</strong> Average contribution to the public goods game: without punishment.</p>
+<p><em>Tip:</em> When using <strong>pandas</strong>, there are several different types of brackets for accessing data values. Let’s list them so that you know the differences. Here are the different ways to get the first column of a dataframe (when that first column is called <code>column</code> and the dataframe is <code>df</code>):</p>
+<ul>
+<li><code>df.column</code></li>
+<li><code>df["column"]</code></li>
+<li><code>df.loc[:, "column"]</code></li>
+<li><code>df.iloc[:, 0]</code></li>
+</ul>
+<p>Note that <code>:</code> means ‘give me everything’! The ways to access rows are similar (here assuming the first row is called <code>row</code>):</p>
+<ul>
+<li><code>df.loc["row", :]</code></li>
+<li><code>df.iloc[0, :]</code></li>
+</ul>
+<p>And to access the first value (i.e.&nbsp;the value in first row, first column):</p>
+<ul>
+<li><code>df.column[0]</code></li>
+<li><code>df["column"][0]</code></li>
+<li><code>df.iloc[0, 0]</code></li>
+<li><code>df.loc["row", "column"]</code></li>
+</ul>
+<p>In the above examples, square brackets are instructions to Python about <em>where</em> to grab information from the dataframe. They are like an address system for values within a dataframe. However, square brackets also denote lists, so if you want to select multiple columns or rows, you might see syntax like this:</p>
+<p><code>df.loc[["row0", "row1"], ["column0", "column2"]]</code></p>
+<p>This code picks out two rows and two columns via the lists <code>["row0", "row1"]</code> and <code>["column0", "column2"]</code>. Because there are lists as well as the usual system of selecting values, there are two sets of square brackets.</p>
+</section>
+</section>
+<section id="part-2.2-describing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.2-describing-the-data">Part 2.2 Describing the data</h2>
+<section id="python-walk-through-2.2-importing-the-datafile-into-python" class="level3">
+<h3 class="anchored" data-anchor-id="python-walk-through-2.2-importing-the-datafile-into-python">Python walk-through 2.2 Importing the datafile into Python</h3>
+<p>Both the tables you need are in a single Excel worksheet. Note down the cell ranges of each table, in this case A2:Q12 for the without punishment data and A16:Q26 for the punishment data. We will use this range information to import the data into two dataframes (<code>data_n</code> and <code>data_p</code> respectively).</p>
+<p>In the code below, we’ll use the <code>.copy</code> method, which we’ll explain more about in a moment.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_np <span class="op">=</span> pd.read_excel(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data/doing-economics-datafile-working-in-excel-project-2.xlsx"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    usecols<span class="op">=</span><span class="st">"A:Q"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    header<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    index_col<span class="op">=</span><span class="st">"Period"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>data_n <span class="op">=</span> data_np.iloc[:<span class="dv">10</span>, :].copy()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>data_p <span class="op">=</span> data_np.iloc[<span class="dv">14</span>:<span class="dv">24</span>, :].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When loading the data from Excel, you may see an error message about an ‘unknown extension’. Note that this particular Excel file has some issues that mean <strong>pandas</strong> will warn you about an ‘unknown extension’: an Excel file is actually a bundle of files tied up to look like one file, and what has happened here is that <strong>pandas</strong> doesn’t recognise one of the files in the bundle. Despite this issue, we can still import the data we need in the worksheets.</p>
+<p>In the code above, we used <code>.copy</code> and you may be wondering what it does. When a new object (say <code>data_p</code>) is created from an <em>existing</em> object (here <code>data_np</code>), programming languages have a few different options for how to do it. In this case, Python has two options: it could allocate some entirely new memory to store the new variable, <code>data_p</code>, or it could just create a link to the <em>existing</em> bit of memory where some of <code>data_np</code> is stored.</p>
+<p>The two different approaches behave differently. Under the former, changes to <code>data_p</code> won’t affect <code>data_np</code> because <code>data_p</code> gets its own bit of memory and is entirely independent of the existing variable. But in the latter case, any changes to <code>data_p</code> will also be applied to <code>data_np</code>! This is because, underneath it all, they’re both ‘pointing’ to the same bit of computer memory. Indeed, that is why variables that do this are sometimes called <em>pointers</em>. They’re common to most programming languages and <strong>pandas</strong> tends to use them by default because they save on memory. This case is just an example of a situation where we don’t want to change <code>data_np</code> by changing <code>data_p</code>, so we use the <code>.copy</code> method to allocate new memory and avoid creating a pointer.</p>
+<p>Let’s see a simple example of how this <code>.copy</code> method works:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>test_data <span class="op">=</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"City A"</span>: [<span class="fl">14.1</span>, <span class="fl">14.1</span>, <span class="fl">13.7</span>],</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"City B"</span>: [<span class="fl">11.0</span>, <span class="fl">12.6</span>, <span class="fl">12.1</span>],</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Original dataframe</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>test_df <span class="op">=</span> pd.DataFrame.from_dict(test_data)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># A copy of the dataframe</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>test_copy <span class="op">=</span> test_df.copy()</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># A pointer to the dataframe</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>test_pointer <span class="op">=</span> test_df</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>test_pointer.iloc[<span class="dv">1</span>, <span class="dv">1</span>] <span class="op">=</span> <span class="dv">99</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, even though we only modified <code>test_pointer</code>, we can look at both the original data frame and the copy that we took earlier:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"test_df="</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>test_df<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"test_copy="</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>test_copy<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>test_df=
+   City A  City B
+0    14.1    11.0
+1    14.1    99.0
+2    13.7    12.1
+
+
+test_copy=
+   City A  City B
+0    14.1    11.0
+1    14.1    12.6
+2    13.7    12.1</code></pre>
+<p>We see that <code>test_df</code> has changed because <code>test_pointer</code> pointed to it, but our pure copy, <code>test_copy</code>, hasn’t changed.</p>
+<p>As well as importing the correct data, we’re going to ensure it is of the correct <em>datatype</em>. Common datatypes include ‘double’ and ‘integer’ (for numbers), string (for words), and ‘category’ (for variables that take on a fixed number of categories, like ethnicity or educational attainment). We can check the datatypes of the data we just read in using <code>data_n.info()</code> (you can do the same for <code>data_p</code>).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data_n.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Index: 10 entries, 1 to 10
+Data columns (total 16 columns):
+ #   Column           Non-Null Count  Dtype
+---  ------           --------------  -----
+ 0   Copenhagen       10 non-null     object
+ 1   Dnipropetrovs’k  10 non-null     object
+ 2   Minsk            10 non-null     object
+ 3   St. Gallen       10 non-null     object
+ 4   Muscat           10 non-null     object
+ 5   Samara           10 non-null     object
+ 6   Zurich           10 non-null     object
+ 7   Boston           10 non-null     object
+ 8   Bonn             10 non-null     object
+ 9   Chengdu          10 non-null     object
+ 10  Seoul            10 non-null     object
+ 11  Riyadh           10 non-null     object
+ 12  Nottingham       10 non-null     object
+ 13  Athens           10 non-null     object
+ 14  Istanbul         10 non-null     object
+ 15  Melbourne        10 non-null     object
+dtypes: object(16)
+memory usage: 1.3+ KB</code></pre>
+<p>All of the columns are of the ‘object’ type, which is Python’s default when it’s not clear what datatype to use.</p>
+<p>We have continuous real numbers in the columns of <code>data_n</code> and <code>data_p</code> here, so we’ll set the datatypes to be <code>double</code>, which is a datatype used for continuous real numbers.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data_n <span class="op">=</span> data_n.astype(<span class="st">"double"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data_p <span class="op">=</span> data_p.astype(<span class="st">"double"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can look at the data either by opening the dataframes from the Environment window or by typing <code>data_n</code> or <code>data_p</code> into the interactive Python window.</p>
+<p>You can see that in each row, the average contribution varies across countries; in other words, there is a distribution of average contributions in each period.</p>
+</section>
+<section id="python-walk-through-2.3-calculating-the-mean-using-the-.mean-or-the-agg-function" class="level3">
+<h3 class="anchored" data-anchor-id="python-walk-through-2.3-calculating-the-mean-using-the-.mean-or-the-agg-function">Python walk-through 2.3 Calculating the mean using the <code>.mean()</code> or the <code>agg</code> function</h3>
+<p>We calculate the mean using two different methods, to illustrate that there are usually many ways of achieving the same thing. We apply the first method on <code>data_n</code>, which uses the built-in <code>.mean()</code> function to calculate the average separately over each column except the first. We use the second method (the <code>agg</code> function) on <code>data_p</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mean_n_c <span class="op">=</span> data_n.mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mean_p_c <span class="op">=</span> data_p.agg(np.mean, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>As the name suggests, the <code>agg</code> function applies an aggregation function (the mean function in this case) to all rows or columns in a dataframe. The second input, <code>axis=1</code>, applies the specified function to all rows in <code>data_p</code>, so we are taking the average over cities for each period.</p>
+<p>Typing <code>axis=0</code> would have calculated column means instead, i.e.&nbsp;it would have averaged over periods to produce one value per city (run this code to see for yourself). Type <code>help(pd.DataFrame.agg)</code> in your interactive Python window for more details, or see Python walk-through 2.5 for further practice.</p>
+<p>####Plot the mean contribution####</p>
+<p>Now we will produce a line chart showing the mean contributions.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mean_n_c.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Without punishment"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mean_p_c.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"With punishment"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Average contributions to the public goods game"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Average contribution"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax.legend()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="empirical_project_2_files/empirical_project_2_WT2_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p><strong>Figure 2.2</strong> Average contributions to the public goods game, with and without punishment.</p>
+<p>The difference between experiments is stark, as the contributions increase and then stabilise at around 13 in the case where there is punishment, but decrease consistently from around 11 to 4 across the rounds when there is no punishment.</p>
+</section>
+<section id="python-walk-through-2.4-drawing-a-column-chart-to-compare-two-groups" class="level3">
+<h3 class="anchored" data-anchor-id="python-walk-through-2.4-drawing-a-column-chart-to-compare-two-groups">Python walk-through 2.4 Drawing a column chart to compare two groups</h3>
+<p>To do this next part, we’re going to use something called a ‘list comprehension’, which is a special kind of loop. Loops are very useful in programming when you have the same task that you want to execute for a sequence of values. You could use a loop to find the squares of the first 10 numbers, for example.</p>
+<p>A list comprehension is a way of writing a loop that creates a Python list. The loops it creates tend to be fast to run too.</p>
+<p>As a specific example, let’s say we wanted to add the first name ‘John’ to a list of names. Using a list comprehension, the code would be:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>partial_names_list <span class="op">=</span> [<span class="st">"F. Kennedy"</span>, <span class="st">"Lennon"</span>, <span class="st">"Maynard Keynes"</span>, <span class="st">"Wayne"</span>]</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>[<span class="st">"John "</span> <span class="op">+</span> name <span class="cf">for</span> name <span class="kw">in</span> partial_names_list]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>['John F. Kennedy', 'John Lennon', 'John Maynard Keynes', 'John Wayne']</code></pre>
+<p>The second line shows the syntax: square bracket (which usually signifies a list), then an operation (here <code>"John" + name</code>), and then <code>for name_of_thing in name_of_list</code> (replace <code>name_of_thing</code> and <code>name_of_list</code> with the thing you would like to apply the loop to, and your list name).</p>
+<p>To make a column chart, we will use the <code>.plot.bar()</code> function. We first extract the four data points we need (Periods 1 and 10, with and without punishment) and place them into another dataframe (called <code>compare_grps</code>).</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new dataframe with bars in</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>compare_grps <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    [mean_n_c.loc[[<span class="dv">1</span>, <span class="dv">10</span>]], mean_p_c.loc[[<span class="dv">1</span>, <span class="dv">10</span>]]],</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"Without punishment"</span>, <span class="st">"With punishment"</span>],</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns to have 'round' in them</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>compare_grps.columns <span class="op">=</span> [<span class="st">"Round "</span> <span class="op">+</span> <span class="bu">str</span>(i) <span class="cf">for</span> i <span class="kw">in</span> compare_grps.columns]</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Swap the column and index variables around with the transpose function, ready for plotting (.T is transpose)</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>compare_grps <span class="op">=</span> compare_grps.T</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a bar chart</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>compare_grps.plot.bar(rot<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="empirical_project_2_files/empirical_project_2_31_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p><strong>Figure 2.3</strong> Mean contributions in a public goods game.</p>
+<p><em>Tip:</em> Experimenting with these charts will help you to learn how to use Python and its packages. Try using <code>.plot.bar(stacked=True)</code> or using <code>rot=45</code> as <em>keyword arguments</em>, or using <code>.plot.barh()</code> instead.</p>
+</section>
+<section id="python-walk-through-2.5-calculating-and-understanding-the-standard-deviation" class="level3">
+<h3 class="anchored" data-anchor-id="python-walk-through-2.5-calculating-and-understanding-the-standard-deviation">Python walk-through 2.5 Calculating and understanding the standard deviation</h3>
+<p>In order to calculate these standard deviations and variances, we will use the <code>agg</code> function, which we introduced in Python walk-through 2.3. As we saw, <code>agg</code> is a command that asks <strong>pandas</strong> to aggregate a set of rows or columns of the dataframe using a particular aggregation function. The basic structure is as follows: <code>dataframe_name.agg([function1, function2, ...], rows/columns)</code>. So to calculate the variances and more, we use the following command:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>n_c <span class="op">=</span> data_n.agg([<span class="st">"std"</span>, <span class="st">"var"</span>, <span class="st">"mean"</span>], <span class="dv">1</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>n_c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div>
+
+<table class="dataframe table table-sm table-striped small">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+std
+</th>
+<th>
+var
+</th>
+<th>
+mean
+</th>
+</tr>
+<tr>
+<th>
+Period
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+1
+</th>
+<td>
+2.020724
+</td>
+<td>
+4.083325
+</td>
+<td>
+10.578313
+</td>
+</tr>
+<tr>
+<th>
+2
+</th>
+<td>
+2.238129
+</td>
+<td>
+5.009220
+</td>
+<td>
+10.628398
+</td>
+</tr>
+<tr>
+<th>
+3
+</th>
+<td>
+2.329569
+</td>
+<td>
+5.426891
+</td>
+<td>
+10.407079
+</td>
+</tr>
+<tr>
+<th>
+4
+</th>
+<td>
+2.068213
+</td>
+<td>
+4.277504
+</td>
+<td>
+9.813033
+</td>
+</tr>
+<tr>
+<th>
+5
+</th>
+<td>
+2.108329
+</td>
+<td>
+4.445049
+</td>
+<td>
+9.305433
+</td>
+</tr>
+<tr>
+<th>
+6
+</th>
+<td>
+2.240881
+</td>
+<td>
+5.021549
+</td>
+<td>
+8.454844
+</td>
+</tr>
+<tr>
+<th>
+7
+</th>
+<td>
+2.136614
+</td>
+<td>
+4.565117
+</td>
+<td>
+7.837568
+</td>
+</tr>
+<tr>
+<th>
+8
+</th>
+<td>
+2.349442
+</td>
+<td>
+5.519880
+</td>
+<td>
+7.376388
+</td>
+</tr>
+<tr>
+<th>
+9
+</th>
+<td>
+2.413845
+</td>
+<td>
+5.826645
+</td>
+<td>
+6.392985
+</td>
+</tr>
+<tr>
+<th>
+10
+</th>
+<td>
+2.187126
+</td>
+<td>
+4.783520
+</td>
+<td>
+4.383769
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Here we take <code>data_n</code> and apply the <code>"var"</code> and <code>"std"</code> functions to each row (recall that the second input 1 does this; 0 would indicate columns). Note that the index column, which contains the period numbers, is automatically excluded from the calculation. The result is saved as a new variable called <code>n_c</code>.</p>
+<p>We then apply the same principle to the <code>data_p</code> dataframe.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p_c <span class="op">=</span> data_p.agg([<span class="st">"std"</span>, <span class="st">"var"</span>, <span class="st">"mean"</span>], <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Aside:</em> In the next chart, we will use another kind of loop. The syntax for this one is ‘for ‘thing’ in list of things’, then a colon (‘:’), then an indented operation that uses ‘thing’.</p>
+<p>To determine whether 95% of the observations fall within two standard deviations of the mean, we can use a line chart. As we have 16 countries in every period, we would expect about one observation (0.05 × 16 = 0.8) to fall outside this interval.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>n_c[<span class="st">"mean"</span>].plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"mean"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mean + 2 standard deviations</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>(n_c[<span class="st">"mean"</span>] <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> n_c[<span class="st">"std"</span>]).plot(ax<span class="op">=</span>ax, ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="va">None</span>), color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">"±2 s.d."</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mean - 2 standard deviations</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>(n_c[<span class="st">"mean"</span>] <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> n_c[<span class="st">"std"</span>]).plot(ax<span class="op">=</span>ax, ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="va">None</span>), color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data_n.columns)):</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    ax.scatter(x<span class="op">=</span>data_n.index, y<span class="op">=</span>data_n.iloc[:, i], color<span class="op">=</span><span class="st">"k"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Average contribution"</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Contribution to public goods game without punishment"</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="empirical_project_2_files/empirical_project_2_39_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p><strong>Figure 2.4</strong> Contribution to public goods game without punishment.</p>
+<p>None of the observations fall outside the mean ± two standard deviations interval for the public goods game without punishment. Let’s plot the equivalent chart for the version with punishment.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>p_c[<span class="st">"mean"</span>].plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"mean"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mean + 2 sd</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>(p_c[<span class="st">"mean"</span>] <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> p_c[<span class="st">"std"</span>]).plot(ax<span class="op">=</span>ax, ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="va">None</span>), color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">"±2 s.d."</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mean - 2 sd</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>(p_c[<span class="st">"mean"</span>] <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> p_c[<span class="st">"std"</span>]).plot(ax<span class="op">=</span>ax, ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="va">None</span>), color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(data_p.columns)):</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    ax.scatter(x<span class="op">=</span>data_p.index, y<span class="op">=</span>data_p.iloc[:, i], color<span class="op">=</span><span class="st">"k"</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Average contribution"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Contribution to public goods game with punishment"</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="empirical_project_2_files/empirical_project_2_WT5_1.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p><strong>Figure 2.5</strong> Contribution to public goods game with punishment.</p>
+<p>Here, we only have one observation outside the interval (in Period 8). In that aspect the two experiments look similar. However, from comparing these two charts, the game with punishment displays a greater variation of responses than the game without punishment. In other words, there is a larger standard deviation and variance for the observations coming from the game with punishment.</p>
+</section>
+<section id="python-walk-through-2.6-finding-the-minimum-maximum-and-range-of-a-variable" class="level3">
+<h3 class="anchored" data-anchor-id="python-walk-through-2.6-finding-the-minimum-maximum-and-range-of-a-variable">Python walk-through 2.6 Finding the minimum, maximum, and range of a variable</h3>
+<p>We’re now going to see one of our first <em>functions</em>. A function takes inputs, does some operations on them, and returns outputs.</p>
+<p>You can imagine functions as vending machines: for them to work you need some inputs (money, and a choice of snack or drink), then an operation happens (your drink or snack is dropped into the tray), and finally there is an output (your drink or snack as you grab it).</p>
+<p>Functions are incredibly useful in programming because they are separate units that can be tested in isolation, re-used, and given helpful ‘dressing’ (such as information on how they work) that make code more readable.</p>
+<p>To calculate the range for both experiments and for all periods, we will use an <code>apply</code> method in combination with the <code>max</code> and <code>min</code> methods that apply to a column or row. We’ll also use a <em>lambda function</em> to bring these all together. In our case, it’s going to look like this:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data_p.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.<span class="bu">max</span>() <span class="op">-</span> x.<span class="bu">min</span>(), axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Period
+1     10.199675
+2     12.185065
+3     12.689935
+4     12.625000
+5     12.140375
+6     12.827541
+7     13.098931
+8     13.482621
+9     13.496754
+10    11.307360
+dtype: float64</code></pre>
+<p>This lambda function tells Python to take the difference between the maximum and minimum of each row.</p>
+<p>A <em>lambda function</em> is an idea in programming (and mathematics) that has a long and interesting history. You don’t need to know all that, but it is instructive to look at a more general example of a lambda function:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda function accepting three inputs, a, b, and c, and calculating the sum of the squares</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>test_function <span class="op">=</span> <span class="kw">lambda</span> a, b, c: a<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> c<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we apply the function by handing over (in parenthesis) the following inputs: a=3, b=4 and c=5</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>test_function(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>50</code></pre>
+<p>Above, we defined a lambda function that looked like <code>lambda x: x.max() - x.min()</code>. It accepts one input, <code>x</code> (which could be a row or column), and returns the range of <code>x</code>. Because making code reusable is good programming practice, we will define this function and give it a name using a separate line of code like this:</p>
+<p><code>range_function = lambda x: x.max() - x.min()</code></p>
+<p>When we call <code>data_p.apply(range_function, axis=1)</code>, the following will happen: <code>data_p</code> contains the experimental data (with punishment). We will apply the <code>range_function</code> to that data. As <code>data_p</code> has two dimensions, we also need to let Python know over which dimension it should calculate the minimum and maximum. The <code>axis=1</code> option in the apply function tells the apply function that it should apply the <code>range_function</code> over rows rather than columns (to get columns, it would be <code>axis=0</code>, which is also the default if you don’t specify the axis keyword argument).</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>range_function <span class="op">=</span> <span class="kw">lambda</span> x: x.<span class="bu">max</span>() <span class="op">-</span> x.<span class="bu">min</span>()</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>range_p <span class="op">=</span> data_p.<span class="bu">apply</span>(range_function, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>range_n <span class="op">=</span> data_n.<span class="bu">apply</span>(range_function, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s create a chart of the ranges for both experiments for all periods in order to compare them.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>range_p.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"With punishment"</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>range_n.plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"Without punishment"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, <span class="va">None</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Range of contributions to the public goods game"</span>)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="empirical_project_2_files/empirical_project_2_51_0.png" class="img-fluid figure-img"></p>
+<figcaption>png</figcaption>
+</figure>
+</div>
+<p><strong>Figure 2.6</strong> Range of contributions to the public goods game.</p>
+<p>This chart confirms what we found in Python walk-through 2.5, which is that there is a greater spread (variation) of contributions in the game with punishment.</p>
+</section>
+<section id="python-walk-through-2.7-creating-a-table-of-summary-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="python-walk-through-2.7-creating-a-table-of-summary-statistics">Python walk-through 2.7 Creating a table of summary statistics</h3>
+<p>We have already done most of the work for creating this summary table in Python walk-through 2.6. Since we also want to display the minimum and maximum values, we should create these too. And it’s convenient to add in <code>std</code> and <code>mean</code> using the same syntax (even though we created a separate mean earlier), so we have all the information in one place. We’ll call our new summary statistics <code>summ_p</code> and <code>summ_n</code>.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>funcs_to_apply <span class="op">=</span> [range_function, <span class="st">"max"</span>, <span class="st">"min"</span>, <span class="st">"std"</span>, <span class="st">"mean"</span>]</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>summ_p <span class="op">=</span> data_p.<span class="bu">apply</span>(funcs_to_apply, axis<span class="op">=</span><span class="dv">1</span>).rename(columns<span class="op">=</span>{<span class="st">"&lt;lambda&gt;"</span>: <span class="st">"range"</span>})</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>summ_n <span class="op">=</span> data_n.<span class="bu">apply</span>(funcs_to_apply, axis<span class="op">=</span><span class="dv">1</span>).rename(columns<span class="op">=</span>{<span class="st">"&lt;lambda&gt;"</span>: <span class="st">"range"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that as well as applying all of the functions in the list <code>funcs_to_apply</code>, we also renamed the first function using the <code>rename</code> method. Because the range isn’t a built-in aggregation function and we defined it, it is automatically given a column name—and because the range function we supplied is a lambda function, the name it gets is <code>"&lt;lambda&gt;"</code>. Using <code>rename(columns=</code>, we change this name to <code>"range"</code> using a dictionary object (<code>{ : }</code>) that maps the old name to the new name.</p>
+<p>Now we display the summary statistics in a table. We use the <code>round</code> method, which reduces the number of digits displayed after the decimal point (<code>2</code> in our case) and makes the table easier to read. We’re only interested in periods 1 and 10, so we pass a list, <code>[1, 10]</code>, to the <code>.loc</code> selector in the first position (which corresponds to rows and the index). We want all columns, so we pass <code>:</code> to the second position of the <code>.loc</code> selector.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>summ_n.loc[[<span class="dv">1</span>, <span class="dv">10</span>], :].<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div>
+
+<table class="dataframe table table-sm table-striped small">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+range
+</th>
+<th>
+max
+</th>
+<th>
+min
+</th>
+<th>
+std
+</th>
+<th>
+mean
+</th>
+</tr>
+<tr>
+<th>
+Period
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+1
+</th>
+<td>
+6.14
+</td>
+<td>
+14.10
+</td>
+<td>
+7.96
+</td>
+<td>
+2.02
+</td>
+<td>
+10.58
+</td>
+</tr>
+<tr>
+<th>
+10
+</th>
+<td>
+7.38
+</td>
+<td>
+8.68
+</td>
+<td>
+1.30
+</td>
+<td>
+2.19
+</td>
+<td>
+4.38
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now we do the same for the version with punishment.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>summ_p.loc[[<span class="dv">1</span>, <span class="dv">10</span>], :].<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div>
+
+<table class="dataframe table table-sm table-striped small">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+range
+</th>
+<th>
+max
+</th>
+<th>
+min
+</th>
+<th>
+std
+</th>
+<th>
+mean
+</th>
+</tr>
+<tr>
+<th>
+Period
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+<th>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+1
+</th>
+<td>
+10.20
+</td>
+<td>
+16.02
+</td>
+<td>
+5.82
+</td>
+<td>
+3.21
+</td>
+<td>
+10.64
+</td>
+</tr>
+<tr>
+<th>
+10
+</th>
+<td>
+11.31
+</td>
+<td>
+17.51
+</td>
+<td>
+6.20
+</td>
+<td>
+3.90
+</td>
+<td>
+12.87
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section id="part-2.3-describing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="part-2.3-describing-the-data">Part 2.3 Describing the data</h2>
+<section id="python-walk-through-2.8-calculating-the-p-value-for-the-difference-in-means" class="level3">
+<h3 class="anchored" data-anchor-id="python-walk-through-2.8-calculating-the-p-value-for-the-difference-in-means">Python walk-through 2.8 Calculating the p-value for the difference in means</h3>
+<p>We need to extract the observations in Period 1 for the data for with and without punishment, and then feed the observations into a function that performs a t-test. We’ll use the statistics package <code>pingouin</code> for this, which you will need to install on the command line using <code>pip install pingouin</code>. Once installed, import it using <code>import pingouin as pg</code>, just like we did at the start of the chapter.</p>
+<p><em>Tip:</em> you can open up the command line, also known as the <em>terminal</em> or <em>command prompt</em>, in order to install packages in multiple ways. If you’re working within Visual Studio Code use the <kbd>⌃</kbd> + <kbd>`</kbd> keyboard shortcut (Mac) or <kbd>ctrl</kbd> + <kbd>`</kbd> (Windows and Linux), or click ‘View &gt; Terminal’. If you want to open up the command line independently of Visual Studio Code, search for ‘Terminal’ on Mac and Linux, and ‘Anaconda Prompt’ on Windows.</p>
+<p><strong>pingouin</strong>’s t-test function is called <code>ttest</code>. The <code>ttest</code> function is extremely flexible: if you input two variables (<code>x</code> and <code>y</code>) as shown below, it will automatically test whether the difference in means is likely to be due to chance or not (formally speaking, it tests the null hypothesis that the means of both variables are equal).</p>
+<p>Note that the <code>ttest</code> function will only accept one series of data, not multiple data series. By subsetting (<code>iloc[1, :]</code>), we are passing in the 0th row (the first period) for all columns (cities).</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pg.ttest(x<span class="op">=</span>data_n.iloc[<span class="dv">0</span>, :], y<span class="op">=</span>data_p.iloc[<span class="dv">0</span>, :])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div>
+
+<table class="dataframe table table-sm table-striped small">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+T
+</th>
+<th>
+dof
+</th>
+<th>
+alternative
+</th>
+<th>
+p-val
+</th>
+<th>
+CI95%
+</th>
+<th>
+cohen-d
+</th>
+<th>
+BF10
+</th>
+<th>
+power
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+t-test
+</th>
+<td>
+-0.063782
+</td>
+<td>
+30
+</td>
+<td>
+two-sided
+</td>
+<td>
+0.949567
+</td>
+<td>
+[-2.0, 1.87]
+</td>
+<td>
+0.02255
+</td>
+<td>
+0.337
+</td>
+<td>
+0.050437
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Note that as well as the t-statistic (<code>T</code>), the p-value (<code>p-val</code>), the degrees of freedom (<code>dof</code>), the alternative hypothesis (<code>two-sided</code>) and the confidence interval (<code>CI95%</code>), we get some other variables that help us put the main results into context.</p>
+<p>This result delivers a p-value of 0.9496. This means it is very likely that the assumption that there are no differences in the populations is likely to be true (formally speaking, we cannot reject the null hypothesis).</p>
+<p>The <code>ttest</code> function automatically assumes that both variables were generated by different groups of people. When calculating the p-value, it assumes that the observed differences are partly due to some variation in characteristics between these two groups, and not just the differences in experimental conditions. However, in this case, the same groups of people did both experiments, so there will not be any variation in characteristics between the groups. When calculating the p-value, we account for this fact with the <code>paired=True</code> option.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pg.ttest(x<span class="op">=</span>data_n.iloc[<span class="dv">0</span>, :], y<span class="op">=</span>data_p.iloc[<span class="dv">0</span>, :], paired<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div>
+
+<table class="dataframe table table-sm table-striped small">
+<thead>
+<tr>
+<th>
+</th>
+<th>
+T
+</th>
+<th>
+dof
+</th>
+<th>
+alternative
+</th>
+<th>
+p-val
+</th>
+<th>
+CI95%
+</th>
+<th>
+cohen-d
+</th>
+<th>
+BF10
+</th>
+<th>
+power
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+t-test
+</th>
+<td>
+-0.149959
+</td>
+<td>
+15
+</td>
+<td>
+two-sided
+</td>
+<td>
+0.882795
+</td>
+<td>
+[-0.92, 0.8]
+</td>
+<td>
+0.02255
+</td>
+<td>
+0.258
+</td>
+<td>
+0.05082
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The p-value becomes smaller as we can attribute more of the differences to the ‘with punishment’ treatment, but the p-value is still very large (0.8828), so we still conclude that the differences in Period 1 are likely to be due to chance.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
